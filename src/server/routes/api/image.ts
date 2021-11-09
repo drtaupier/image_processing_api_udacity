@@ -2,11 +2,12 @@ import { promises } from 'dns';
 import express from 'express';
 import { truncate } from 'lodash';
 import sharp from 'sharp';
-import fs from 'fs';
 import path from 'path';
+import { nextTick } from 'process';
 const images = express.Router();
+const app = express();
 
-images.get('/', (req, res) => {
+images.get('/', async (req, res) => {
 	const query = req.query;
 	const filename = query.filename;
 	const width: any = query.width;
@@ -20,7 +21,7 @@ images.get('/', (req, res) => {
 		res.status(400).send('The height parameter is invalid, please try again');
 	} else {
 		const newFile = `./public/output/${filename}${widthImg}x${heightImg}.jpg`;
-		sharp(`./public/images/${filename}.jpg`)
+		await sharp(`./public/images/${filename}.jpg`)
 			.resize(widthImg, heightImg, {
 				fit: 'contain',
 				background: {
@@ -30,10 +31,9 @@ images.get('/', (req, res) => {
 				},
 			})
 			.toFile(newFile);
-		res.status(201).json({
-			ok: true,
-			msj: 'The file was created successfully',
-		});
+		const newFileUrl: string = newFile.slice(1); //Quitamos el punto con el que inicia el string
+		console.log(newFileUrl);
+		res.redirect(`http://localhost:3000${newFileUrl}`);
 	}
 });
 
