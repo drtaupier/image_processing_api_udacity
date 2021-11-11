@@ -1,12 +1,15 @@
-import express from 'express';
+import { config as dotenv } from 'dotenv';
+import express, { NextFunction } from 'express';
 import routes from './routes/index';
-import path, { dirname } from 'path';
+import path from 'path';
 import morgan from 'morgan';
-
+dotenv();
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 //Middlewares
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.static('dist'));
 app.use('/public', express.static('public'));
