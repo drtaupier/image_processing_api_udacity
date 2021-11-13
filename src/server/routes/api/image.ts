@@ -8,12 +8,13 @@ images.get('/', async (req, res) => {
 	const width: any = query.width;
 	const height: any = query.height;
 	const filename: any = query.filename;
+	const filenameImg: string = filename.toString();
 	const widthImg: number = parseInt(width, 10);
 	const heightImg: number = parseInt(height, 10);
 	try {
 		imgValidations(query);
-		const newFile = `./public/output/${filename}${widthImg}x${heightImg}.jpg`;
-		await sharp(`./public/images/${filename}.jpg`)
+		const newFile = `./public/output/${filenameImg}${widthImg}x${heightImg}.jpg`;
+		await sharp(`./public/images/${filenameImg}.jpg`)
 			.resize(widthImg, heightImg, {
 				fit: 'contain',
 				background: {
