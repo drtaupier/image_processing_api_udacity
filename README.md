@@ -5,7 +5,7 @@ This project was made with the next technologys:
 
 1. TypeScript
 2. Node.js
-3. eslint
+3. ESlint
 4. Prettier
 5. Jasmine
 
