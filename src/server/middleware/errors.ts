@@ -7,15 +7,15 @@ const imgValidations = (data: any) => {
 	const files = fs.readdirSync(directory);
 	const image = `${filename}.jpg`;
 
-	if (filename.length === 0 || undefined) {
+	if (filename.length === 0 ?? undefined) {
 		throw new SyntaxError('Please, give us the file name');
 	}
 
-	if (width === 0 || undefined) {
+	if (width === 0 ?? undefined) {
 		throw new SyntaxError('Please, give us the image width');
 	}
 
-	if (height === 0 || undefined) {
+	if (height === 0 ?? undefined) {
 		throw new SyntaxError('Please, give us the image height');
 	}
 
