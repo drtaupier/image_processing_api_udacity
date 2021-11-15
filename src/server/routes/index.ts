@@ -3,7 +3,10 @@ import images from './api/image';
 const routes = express.Router();
 
 routes.get('/', (req, res) => {
-	res.send('Main API route!');
+	res.json({
+		msg:
+			'Remember, you need enter the filename value, then the width value and the height value',
+	});
 });
 
 routes.use('/images', images);
