@@ -1,9 +1,15 @@
 import sharp from 'sharp';
-const imageResize = async (name: string, width: number, height: number) => {
-	const imgComplete: string = `${name}${width}x${height}.jpg`.toString();
+const imageResize = async (
+	name: string,
+	width: string,
+	height: string
+): Promise<void> => {
+	const widthImg: number = parseInt(width, 10);
+	const heightImg: number = parseInt(height, 10);
+	const imgComplete: string = `${name}${widthImg}x${heightImg}.jpg`.toString();
 	const newFile = `./public/output/${imgComplete}`;
 	await sharp(`./public/images/${name}.jpg`)
-		.resize(width, height, {
+		.resize(widthImg, heightImg, {
 			fit: 'contain',
 			background: {
 				r: 0,
