@@ -5,7 +5,7 @@ import path from 'path';
 import morgan from 'morgan';
 dotenv();
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT ?? 3000;
 
 //Middlewares
 app.use(express.urlencoded({ extended: false }));
