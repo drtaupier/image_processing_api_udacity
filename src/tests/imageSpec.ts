@@ -23,7 +23,7 @@ describe('GET /api/images/:filename/:width/:height', () => {
 
 describe('Function imageResize', () => {
 	it('Should return expected result for a string parameter and two numbers parameters', () => {
-		const result = imageResize('santamonica', 800, 400);
+		const result = imageResize('santamonica', '800', '400');
 		expect(result).toBeTrue;
 	});
 });
