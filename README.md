@@ -8,6 +8,7 @@ This project was made with the next technologys:
 3. ESlint
 4. Prettier
 5. Jasmine
+6. Sharp
 
 ## Executing the program:
 
